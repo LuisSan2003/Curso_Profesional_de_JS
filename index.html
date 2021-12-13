@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="index.css">
+    <title>Platzi Media Player</title>
+</head>
+<body>
+    <header>
+        <h1>Platzi Media Player</h1>
+        <p>An extensible media player</p>
+    </header>
+
+    <main class="container">
+        <video class="movie">
+            <source src="assets/BigBuckBunny.mp4">
+        </video>
+
+        <button>Play/Pause</button>
+    </main>
+
+    <script>
+        const video = document.querySelector("video");
+        const button = document.querySelector("button");
+
+        function MediaPlayer(config) {
+            this.media = config.el;
+        };
+        
+        MediaPlayer.prototype.play = function() {
+            this.media.play();
+        }
+        MediaPlayer.prototype.pause = function() {
+            this.media.pause();
+        }
+
+        MediaPlayer.prototype.togglePlay = function(){
+            if (this.media.paused) {
+                this.play();                
+            }else{
+                this.pause();
+            }
+        };
+
+        const player = new MediaPlayer( { el: video });
+        // this guarda un valor en la instancia de un objeto, y con prototype podemos acceder a ese valor
+
+        button.onclick = () => player.togglePlay();
+
+    </script>
+</body>
+</html>
