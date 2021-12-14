@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="index.css">
+    <link rel="stylesheet" href="assets/index.css">
     <title>Platzi Media Player</title>
 </head>
 <body>
@@ -21,34 +21,9 @@
         <button>Play/Pause</button>
     </main>
 
-    <script>
-        const video = document.querySelector("video");
-        const button = document.querySelector("button");
-
-        function MediaPlayer(config) {
-            this.media = config.el;
-        };
-        
-        MediaPlayer.prototype.play = function() {
-            this.media.play();
-        }
-        MediaPlayer.prototype.pause = function() {
-            this.media.pause();
-        }
-
-        MediaPlayer.prototype.togglePlay = function(){
-            if (this.media.paused) {
-                this.play();                
-            }else{
-                this.pause();
-            }
-        };
-
-        const player = new MediaPlayer( { el: video });
-        // this guarda un valor en la instancia de un objeto, y con prototype podemos acceder a ese valor
-
-        button.onclick = () => player.togglePlay();
-
-    </script>
+    <script type="module" src="assets/index.js"></script>
+    <!--Con el type="module" limita el alcance, es decir, no salen del archivo.
+        Si intentamos invocar una variable o funcion en la consola nos saldra error, 
+        porque module nos lo impide-->
 </body>
 </html>
